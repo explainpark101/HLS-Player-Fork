@@ -2,7 +2,7 @@ var enabled = true;
 
 chrome.webRequest.onBeforeRequest.addListener(
     function (info) {
-        if (enabled && info.type == "main_frame" && info.url.split("?")[0].split("#")[0].endsWith("m3u8")) {
+        if (enabled && info.type == "main_frame" && info.url.split("?")[0].split("#")[0].endsWith(".m3u8")) {
             var playerUrl = chrome.runtime.getURL('player.html') + "#" + info.url;
             chrome.tabs.create({url: playerUrl}, ()=>{
                 chrome.tabs.remove(info.tabId);
